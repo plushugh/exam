@@ -1,0 +1,20 @@
+.exam-container {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 16px;
+}
+
+.exam-message {
+  font-size: clamp(100%, 4vw, 100vh) !important;
+}
+.exam-message-small {
+  font-size: clamp(100%, 3vw, 100vh) !important;
+}
+
+.time-span {
+  font-size: clamp(100%, 3vw, 100vh) !important;
+}
+.time-span-small {
+  margin: 0 0 0 1.5rem;
+  font-size: clamp(100%, 2vw, 100vh) !important;
+}

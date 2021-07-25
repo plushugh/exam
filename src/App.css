@@ -1,0 +1,89 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  color: #fff;
+}
+
+main {
+  margin: auto;
+}
+
+.time {
+  height: min-content;
+  display: flex;
+  flex-direction: row;
+  place-items: flex-end;
+  font-family: "JetBrains Mono", "Menlo", "Consolas", monospace;
+  font-weight: 800;
+  user-select: none;
+}
+
+.h,
+.m,
+.sep {
+  margin: 0;
+  line-height: 80%;
+  color: #fbcb40;
+  letter-spacing: -0.1ch;
+  font-size: clamp(100%, 22vw, 100vh);
+}
+
+.sec,
+.secsep {
+  margin: 0;
+  line-height: 25%;
+  font-size: clamp(100%, 7vw, 100vh);
+  height: 4vw;
+  color: #ffffff85;
+}
+
+.secsep,
+.sep {
+  width: 1ch;
+  letter-spacing: 0.2ch;
+}
+
+.exam-info {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2ch 0 2ch;
+}
+
+.change-grade {
+  position: fixed !important;
+  right: 0;
+  bottom: 0;
+  margin: 0.5rem !important;
+}
+
+.grade-info {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 8px;
+  margin: 1rem;
+}
+
+.show-info {
+  position: fixed !important;
+  right: 0;
+  top: 0;
+  margin: 0.5rem !important;
+}
+
+.show-agreement {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  margin: 0.5rem !important;
+}
+
+.close-info {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  color: rgba(255,255,255,0.8),
+}
