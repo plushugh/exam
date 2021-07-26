@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "./App.css";
+import "./App.scss";
 import dayjs from "dayjs";
 
 import axios from "axios";
@@ -58,7 +58,7 @@ function App() {
   const [isAgreed, setIsAgreed] = useState(false);
 
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   function updateExams(currentGrade: "6" | "7" | "8" | "9") {
     axios({
@@ -125,7 +125,7 @@ function App() {
 
   return (
     <>
-      <Dialog fullScreen={fullScreen} fullWidth maxWidth="xs" open={openChange} TransitionComponent={Transition}>
+      <Dialog fullScreen={isMobile} fullWidth maxWidth="xs" open={openChange} TransitionComponent={Transition}>
         <DialogTitle>选择年级</DialogTitle>
         <List sx={{pt: 0}}>
           <ListItem
@@ -182,7 +182,7 @@ function App() {
           </ListItem>
         </List>
       </Dialog>
-      <Dialog fullScreen={fullScreen} open={openInfo} onClose={() => setOpenInfo(false)}
+      <Dialog fullScreen={isMobile} open={openInfo} onClose={() => setOpenInfo(false)}
               TransitionComponent={Transition}>
         <Stack pr={2} direction="row" justifyContent="space-between" alignItems="center">
           <DialogTitle>关于</DialogTitle>
@@ -201,7 +201,7 @@ function App() {
           </DialogContentText>
         </DialogContent>
       </Dialog>
-      <Dialog fullScreen={fullScreen} scroll="paper" fullWidth maxWidth="xs" open={openAgreement}
+      <Dialog fullScreen={isMobile} scroll="paper" fullWidth maxWidth="xs" open={openAgreement}
               TransitionComponent={Transition}>
         <DialogTitle>使用条款</DialogTitle>
         <DialogContent>
@@ -247,11 +247,11 @@ function App() {
       </Dialog>
       <div className="App">
         <main>
-          <div className="time">
+          <div className={isMobile ? "time-mobile" : "time"}>
             <p className="h">{hms.slice(0, 2)}</p>
-            <p className="sep">{hms.slice(2, 3)}</p>
+            {!isMobile && (<p className="sep">{hms.slice(2, 3)}</p>)}
             <p className="m">{hms.slice(3, 5)}</p>
-            <p className="secsep">{hms.slice(5, 6)}</p>
+            {!isMobile && (<p className="secsep">{hms.slice(5, 6)}</p>)}
             <p className="sec">{hms.slice(6, 8)}</p>
           </div>
           <div className="exam-info">

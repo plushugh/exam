@@ -21,6 +21,30 @@ main {
   font-weight: 500;
   font-style: normal;
   user-select: none;
+  .h,.m, .sep {
+    font-size: clamp(100%, 22vw, 100vh);
+  }
+  .sec, .secsep {
+    font-size: clamp(100%, 7vw, 100vh);
+  }
+}
+
+.time-mobile {
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", "Menlo", "Consolas", monospace;
+  font-weight: 500;
+  font-style: normal;
+  user-select: none;
+  .h,.m, .sep {
+    font-size: clamp(100%, 26vh, 100vh);
+  }
+  .sec, .secsep {
+    font-size: clamp(100%, 8vh, 100vh);
+  }
 }
 
 .h,
@@ -30,13 +54,11 @@ main {
   line-height: 80%;
   color: #fbcb40;
   letter-spacing: -0.1ch;
-  font-size: clamp(100%, 22vw, 100vh);
 }
 
 .sec,
 .secsep {
   margin: 0 0 1.1ch 0;
-  font-size: clamp(100%, 7vw, 100vh);
   height: 4vw;
   color: #ffffff85;
 }
