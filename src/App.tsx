@@ -21,7 +21,7 @@ import {
   DialogContent,
   Slide,
   Stack,
-  DialogActions, Button, Checkbox, FormControl, FormControlLabel, Tooltip, Link,
+  DialogActions, Button, Checkbox, FormControl, FormControlLabel, Tooltip, Link, useTheme, useMediaQuery,
 } from "@material-ui/core";
 
 import {
@@ -56,6 +56,9 @@ function App() {
   const [openInfo, setOpenInfo] = useState(false);
   const [openAgreement, setOpenAgreement] = useState(true);
   const [isAgreed, setIsAgreed] = useState(false);
+
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   function updateExams(currentGrade: "6" | "7" | "8" | "9") {
     axios({
@@ -122,7 +125,7 @@ function App() {
 
   return (
     <>
-      <Dialog fullWidth maxWidth="xs" open={openChange} TransitionComponent={Transition}>
+      <Dialog fullScreen={fullScreen} fullWidth maxWidth="xs" open={openChange} TransitionComponent={Transition}>
         <DialogTitle>选择年级</DialogTitle>
         <List sx={{pt: 0}}>
           <ListItem
@@ -179,7 +182,8 @@ function App() {
           </ListItem>
         </List>
       </Dialog>
-      <Dialog open={openInfo} onClose={() => setOpenInfo(false)} TransitionComponent={Transition}>
+      <Dialog fullScreen={fullScreen} open={openInfo} onClose={() => setOpenInfo(false)}
+              TransitionComponent={Transition}>
         <Stack pr={2} direction="row" justifyContent="space-between" alignItems="center">
           <DialogTitle>关于</DialogTitle>
           <IconButton
@@ -197,9 +201,10 @@ function App() {
           </DialogContentText>
         </DialogContent>
       </Dialog>
-      <Dialog scroll="paper" fullWidth maxWidth="xs" open={openAgreement} TransitionComponent={Transition}>
+      <Dialog fullScreen={fullScreen} scroll="paper" fullWidth maxWidth="xs" open={openAgreement}
+              TransitionComponent={Transition}>
         <DialogTitle>使用条款</DialogTitle>
-        <DialogContent sx={{maxHeight: 300}}>
+        <DialogContent>
           <DialogContentText color="#fff">
             The english version is below the chinese version.<br/>
             简体中文版：<br/>

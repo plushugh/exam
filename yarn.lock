@@ -1393,6 +1393,18 @@ at-least-node@^1.0.0:
   resolved "https://registry.nlark.com/at-least-node/download/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha1-YCzUtG6EStTv/JKoARo8RuAjjcI=
 
+autoprefixer@^10.3.1:
+  version "10.3.1"
+  resolved "https://registry.nlark.com/autoprefixer/download/autoprefixer-10.3.1.tgz?cache=0&sync_timestamp=1626111053301&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fautoprefixer%2Fdownload%2Fautoprefixer-10.3.1.tgz#954214821d3aa06692406c6a0a9e9d401eafbed2"
+  integrity sha1-lUIUgh06oGaSQGxqCp6dQB6vvtI=
+  dependencies:
+    browserslist "^4.16.6"
+    caniuse-lite "^1.0.30001243"
+    colorette "^1.2.2"
+    fraction.js "^4.1.1"
+    normalize-range "^0.1.2"
+    postcss-value-parser "^4.1.0"
+
 axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.nlark.com/axios/download/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
@@ -1498,6 +1510,11 @@ caniuse-lite@^1.0.30001219:
   version "1.0.30001245"
   resolved "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001245.tgz?cache=0&sync_timestamp=1626238653626&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcaniuse-lite%2Fdownload%2Fcaniuse-lite-1.0.30001245.tgz#45b941bbd833cb0fa53861ff2bae746b3c6ca5d4"
   integrity sha1-RblBu9gzyw+lOGH/K650azxspdQ=
+
+caniuse-lite@^1.0.30001243:
+  version "1.0.30001247"
+  resolved "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001247.tgz?cache=0&sync_timestamp=1627105962280&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcaniuse-lite%2Fdownload%2Fcaniuse-lite-1.0.30001247.tgz#105be7a8fb30cdd303275e769a9dfb87d4b3577a"
+  integrity sha1-EFvnqPswzdMDJ152mp37h9SzV3o=
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -1730,6 +1747,11 @@ follow-redirects@^1.10.0:
   version "1.14.1"
   resolved "https://registry.nlark.com/follow-redirects/download/follow-redirects-1.14.1.tgz?cache=0&sync_timestamp=1620555246888&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
   integrity sha1-2RFN7Qoc/dM04WTmZirQK/2R/0M=
+
+fraction.js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.nlark.com/fraction.js/download/fraction.js-4.1.1.tgz#ac4e520473dae67012d618aab91eda09bcb400ff"
+  integrity sha1-rE5SBHPa5nAS1hiquR7aCby0AP8=
 
 fs-extra@^9.0.1:
   version "9.1.0"
@@ -2049,6 +2071,11 @@ node-releases@^1.1.71:
   resolved "https://registry.nlark.com/node-releases/download/node-releases-1.1.73.tgz?cache=0&sync_timestamp=1623060295334&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnode-releases%2Fdownload%2Fnode-releases-1.1.73.tgz#dd4e81ddd5277ff846b80b52bb40c49edf7a7b20"
   integrity sha1-3U6B3dUnf/hGuAtSu0DEnt96eyA=
 
+normalize-range@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npm.taobao.org/normalize-range/download/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+  integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
+
 object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz?cache=0&sync_timestamp=1602657128410&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fobject-assign%2Fdownload%2Fobject-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -2120,6 +2147,11 @@ picomatch@^2.2.2, picomatch@^2.2.3:
   version "2.3.0"
   resolved "https://registry.nlark.com/picomatch/download/picomatch-2.3.0.tgz?cache=0&sync_timestamp=1621648305056&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpicomatch%2Fdownload%2Fpicomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha1-8fBh3o9qS/AiiS4tEoI0+5gwKXI=
+
+postcss-value-parser@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npm.taobao.org/postcss-value-parser/download/postcss-value-parser-4.1.0.tgz#443f6a20ced6481a2bda4fa8532a6e55d789a2cb"
+  integrity sha1-RD9qIM7WSBor2k+oUypuVdeJoss=
 
 postcss@^8.3.5:
   version "8.3.5"

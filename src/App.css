@@ -16,8 +16,10 @@ main {
   display: flex;
   flex-direction: row;
   place-items: flex-end;
+  justify-content: center;
   font-family: "JetBrains Mono", "Menlo", "Consolas", monospace;
-  font-weight: 800;
+  font-weight: 500;
+  font-style: normal;
   user-select: none;
 }
 
@@ -33,8 +35,7 @@ main {
 
 .sec,
 .secsep {
-  margin: 0;
-  line-height: 25%;
+  margin: 0 0 1.1ch 0;
   font-size: clamp(100%, 7vw, 100vh);
   height: 4vw;
   color: #ffffff85;
@@ -85,5 +86,5 @@ main {
   position: absolute;
   right: 8px;
   top: 8px;
-  color: rgba(255,255,255,0.8)
+  color: rgba(255, 255, 255, 0.8)
 }

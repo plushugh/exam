@@ -7,11 +7,12 @@ import "@fontsource/jetbrains-mono";
 
 import App from "./App";
 
-import { registerSW } from "virtual:pwa-register";
-import { createTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import {registerSW} from "virtual:pwa-register";
+import {createTheme, CssBaseline, ThemeProvider} from "@material-ui/core";
 
 const updateSW = registerSW({
-  onOfflineReady() {},
+  onOfflineReady() {
+  },
 });
 
 const theme = createTheme({
@@ -23,8 +24,8 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
+      <CssBaseline/>
+      <App/>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
