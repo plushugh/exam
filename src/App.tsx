@@ -21,11 +21,20 @@ import {
   DialogContent,
   Slide,
   Stack,
-  DialogActions, Button, Checkbox, FormControl, FormControlLabel, Tooltip, Link, useTheme, useMediaQuery,
+  DialogActions,
+  Button,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  Tooltip,
+  Link,
+  useTheme,
+  useMediaQuery,
 } from "@material-ui/core";
 
 import {
-  ChangeCircleOutlined, Close,
+  ChangeCircleOutlined,
+  Close,
   Filter6Outlined,
   Filter7Outlined,
   Filter8Outlined,
@@ -46,39 +55,49 @@ const Transition = React.forwardRef(function Transition(
 let pad2 = (number: number) => (number <= 99 ? `0${number}`.slice(-2) : number);
 
 function App() {
-  const [hms, setHms] = useState("");
-  const [currentExam, setCurrentExam] = useState<Exam | null>();
-  const [nextExam, setNextExam] = useState<Exam | null>();
+  const                                 [hms, setHms] = useState("");
+  const                 [currentExam, setCurrentExam] = useState<Exam | null>();
+  const                       [nextExam, setNextExam] = useState<Exam | null>();
   const [currentExamTimeSpan, setCurrentExamTimeSpan] = useState("");
-  const [nextExamTimeSpan, setNextExamTimeSpan] = useState("");
-  const [grade, setGrade] = useState<"6" | "7" | "8" | "9">("9");
-  const [openChange, setOpenChange] = useState(true);
-  const [openInfo, setOpenInfo] = useState(false);
-  const [openAgreement, setOpenAgreement] = useState(true);
-  const [isAgreed, setIsAgreed] = useState(false);
+  const       [nextExamTimeSpan, setNextExamTimeSpan] = useState("");
+  const                             [grade, setGrade] = useState<"6" | "7" | "8" | "9">("9");
+  const                   [openChange, setOpenChange] = useState(true);
+  const                       [openInfo, setOpenInfo] = useState(false);
+  const             [openAgreement, setOpenAgreement] = useState(true);
+  const                       [isAgreed, setIsAgreed] = useState(false);
 
-  const theme = useTheme();
+  const    theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   function updateExams(currentGrade: "6" | "7" | "8" | "9") {
+    // Get current exam
     axios({
       method: "GET",
       url: `${import.meta.env.VITE_API_BASE_URL}/current/${currentGrade}`,
     }).then((res) => {
       if (res.data.exists) {
         setCurrentExam(res.data);
+
         const start = dayjs(res.data.startTime);
-        const end = dayjs(res.data.endTime);
+        const   end = dayjs(res.data.endTime);
 
         setCurrentExamTimeSpan(
-          `${pad2(start.hour())}:${pad2(start.minute())}-${pad2(
-            end.hour()
-          )}:${pad2(end.minute())}`
+          `${
+            pad2(start.hour())
+          }:${
+            pad2(start.minute())
+          }-${
+            pad2(end.hour())
+          }:${
+            pad2(end.minute())
+          }`
         );
       } else {
         setCurrentExam(null);
       }
     });
+
+    // Get next exam
     axios({
       method: "GET",
       url: `${import.meta.env.VITE_API_BASE_URL}/next/${currentGrade}`,
@@ -86,33 +105,42 @@ function App() {
       if (res.data.exists) {
         setNextExam(res.data);
         const start = dayjs(res.data.startTime);
-        const end = dayjs(res.data.endTime);
+        const   end = dayjs(res.data.endTime);
 
         setNextExamTimeSpan(
-          `${pad2(start.hour())}:${pad2(start.minute())}-${pad2(
-            end.hour()
-          )}:${pad2(end.minute())}`
+          `${
+            pad2(start.hour())
+          }:${
+            pad2(start.minute())
+          }-${
+            pad2(end.hour())
+          }:${
+            pad2(end.minute())
+          }`
         );
       } else {
         setNextExam(null);
       }
     });
-    console.log(currentExam, nextExam);
+  }
+
+  function updateTime() {
+    const now = dayjs();
+    const [hour, min, sec] = [
+      now.hour(),
+      now.minute(),
+      now.second()
+    ];
+    setHms(`${pad2(hour)}:${pad2(min)}:${pad2(sec)}`);
   }
 
   useEffect(() => {
+    // Update for the 1st time
     updateExams(grade);
+    updateTime();
 
-    const now = dayjs();
-    const [hour, min, sec] = [now.hour(), now.minute(), now.second()];
-    setHms(`${pad2(hour)}:${pad2(min)}:${pad2(sec)}`);
-
-    const timeUpdateInterval = setInterval(() => {
-      const now = dayjs();
-      const [hour, min, sec] = [now.hour(), now.minute(), now.second()];
-      setHms(`${pad2(hour)}:${pad2(min)}:${pad2(sec)}`);
-    }, 1);
-
+    // Intervals for updating time and exams
+    const timeUpdateInterval = setInterval(updateTime, 1);
     const examUpdateInterval = setInterval(() => updateExams(grade), 10000);
 
     return () => {
@@ -121,6 +149,7 @@ function App() {
     };
   }, [grade]);
 
+  // Update exams when switching grades
   useEffect(() => updateExams(grade), [grade])
 
   return (
@@ -213,8 +242,9 @@ function App() {
             本应用是MIT许可下的开源软件，如果对此应用的安全、合规与隐私问题有任何疑问请访问本应用的源代码来检查。<br/>
             选中以下的复选框即表示您已同意本条款。<br/>
             本应用的功能可能会随时更改，更改的内容请参照本应用的代码仓库，任何更改对您造成的不便我们概不负责。<br/>
-            本条款可能随时被修改，上次修改日期为：2021/7/25<br/>
-            本条款的英文翻译可能不是百分百准确，请参考简体中文版。
+            本条款可能随时被修改，上次修改日期为：2021/7/27<br/>
+            本条款的英文翻译可能不是百分百准确，请参考简体中文版。<br/>
+            请在每场考试后让下场考试的监考老师同意使用协议以继续使用此应用
             <br/><br/>
             English Version:<br/>
             This app only provides services that display time and exam information, and does not provide services that
@@ -230,19 +260,27 @@ function App() {
             The functions of this application may be changed at any time. Please refer to the code repository of this
             application for the changelog. We are not responsible for any inconvenience caused to you by any
             changes.<br/>
-            These terms may be revised at any time, the last revision date is: 2021/7/25<br/>
+            These terms may be revised at any time, the last revision date is: 2021/7/257<br/>
             The english translation of these terms may not be 100% accurate, please refer to the Simplified Chinese
-            version of these terms.
+            version of these terms.<br/>
+            Please let the invigilator of the next exam agree to these terms in order to use this app.
           </DialogContentText>
         </DialogContent>
         <DialogActions sx={{pr: 2, pl: 3, alignItems: "center", justifyContent: "space-between"}}>
           <FormControl>
-            <FormControlLabel control={<Checkbox color="info" value={isAgreed}
-                                                 onChange={(event => setIsAgreed(event.target.checked))}/>}
-                              label="监考老师已经仔细阅读并同意此条款"/>
+            <FormControlLabel control={
+              <Checkbox color="info"
+                        value={isAgreed}
+                        onChange={(event => setIsAgreed(event.target.checked))}/>
+            } label="监考老师已经仔细阅读并同意此条款"/>
           </FormControl>
-          <Button variant="text" disabled={!isAgreed} onClick={() => setOpenAgreement(false)}
-                  color="success">继续</Button>
+          <Button variant="text"
+                  disabled={!isAgreed}
+                  onClick={() => setOpenAgreement(false)}
+                  color="success"
+          >
+            继续
+          </Button>
         </DialogActions>
       </Dialog>
       <div className="App">
@@ -272,15 +310,37 @@ function App() {
       </div>
       <Paper className="grade-info"><Typography>年级: <code>{grade}</code></Typography></Paper>
       <Tooltip title="切换年级">
-        <IconButton aria-label="Change grade" className="change-grade" size="large"
-                    onClick={() => setOpenChange(true)}><ChangeCircleOutlined/></IconButton></Tooltip>
-      <Tooltip title="关于Exam"><IconButton aria-label="App info" className="show-info" size="large"
-                                          onClick={() => setOpenInfo(true)}><InfoOutlined/></IconButton></Tooltip>
-      <Tooltip title="重新显示条款"><IconButton aria-label="Agreement" className="show-agreement" size="large"
-                                          onClick={() => {
-                                            setIsAgreed(false)
-                                            setOpenAgreement(true);
-                                          }}><GavelOutlined/></IconButton></Tooltip>
+        <IconButton aria-label="Change grade"
+                    className="change-grade"
+                    size="large"
+                    onClick={() => setOpenChange(true)}
+        >
+          <ChangeCircleOutlined/>
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="关于Exam">
+        <IconButton
+          aria-label="App info"
+          className="show-info"
+          size="large"
+          onClick={() => setOpenInfo(true)}
+        >
+          <InfoOutlined/>
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="重新显示条款">
+        <IconButton
+          aria-label="Open agreement"
+          className="show-agreement"
+          size="large"
+          onClick={() => {
+            setIsAgreed(false)
+            setOpenAgreement(true);
+          }}
+        >
+          <GavelOutlined/>
+        </IconButton>
+      </Tooltip>
     </>
   );
 }
