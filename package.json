@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
+    "vercel-build": "",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
@@ -17,6 +18,7 @@
     "autoprefixer": "^10.3.1",
     "axios": "^0.21.1",
     "dayjs": "^1.10.6",
+    "mongoose": "^5.13.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },

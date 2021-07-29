@@ -73,7 +73,7 @@ function App() {
     // Get current exam
     axios({
       method: "GET",
-      url: `${import.meta.env.VITE_API_BASE_URL}/current/${currentGrade}`,
+      url: `/api/getCurrentExam?grade=${currentGrade}`,
     }).then((res) => {
       if (res.data.exists) {
         setCurrentExam(res.data);
@@ -100,7 +100,7 @@ function App() {
     // Get next exam
     axios({
       method: "GET",
-      url: `${import.meta.env.VITE_API_BASE_URL}/next/${currentGrade}`,
+      url: `/api/getNextExam?grade=${currentGrade}`,
     }).then((res) => {
       if (res.data.exists) {
         setNextExam(res.data);
