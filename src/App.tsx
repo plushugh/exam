@@ -234,7 +234,7 @@ function App() {
               TransitionComponent={Transition}>
         <DialogTitle>使用条款</DialogTitle>
         <DialogContent>
-          <DialogContentText color="#fff">
+          <DialogContentText>
             The english version is below the chinese version.<br/>
             简体中文版：<br/>
             本应用仅提供显示时间与考试信息的服务，不提供作弊工具等违规服务，如果考场上有任何违规行为，本应用及作者不承担任何责任。<br/>

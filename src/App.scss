@@ -4,7 +4,17 @@
   place-items: center;
   height: 100vh;
   width: 100vw;
-  color: #fff;
+}
+
+*::-webkit-scrollbar {
+  width: 0.3rem;
+}
+*::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 0.3rem;
 }
 
 main {
@@ -18,7 +28,7 @@ main {
   place-items: flex-end;
   justify-content: center;
   font-family: "JetBrains Mono", "Menlo", "Consolas", monospace;
-  font-weight: 500;
+  font-weight: 800;
   font-style: normal;
   user-select: none;
   .h,.m, .sep {
@@ -40,7 +50,7 @@ main {
   font-style: normal;
   user-select: none;
   .h,.m, .sep {
-    font-size: clamp(100%, 26vh, 100vh);
+    font-size: clamp(100%, 35vh, 100vh);
   }
   .sec, .secsep {
     font-size: clamp(100%, 8vh, 100vh);
