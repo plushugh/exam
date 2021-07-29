@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "vercel-build": "",
+    "vercel-build": "echo build",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
